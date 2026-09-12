@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校園危機降級策略實務研討會</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>特殊狀況同學在衝突發生前的降級策略與應對方法</h1>
+            <p>校園高關懷學生情緒升高、衝突預防與危機處遇實務研討會 | 講師：陳俊合心理師</p>
+        </div>
+    </header>
+
+    <nav aria-label="Main Navigation">
+        <div class="container">
+            <ul>
+                <li><a href="#about">研究背景</a></li>
+                <li><a href="#traits">學生特質與策略</a></li>
+                <li><a href="#signals">危險徵兆燈號</a></li>
+                <li><a href="#decision-tree">互動決策樹</a></li>
+                <li><a href="#flow">宜蘭校園通報流程</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="sos-btn" aria-label="啟動快速應變模式">🚨 危機快速應變</button>
+
+    <div id="sos-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content sos-content">
+            <h2>🚨 立即安全處置指南</h2>
+            <ul>
+                <li><strong>確保安全：</strong> 優先確保全體師生與您自身的安全，必要時疏散旁觀同學。</li>
+                <li><strong>保持距離：</strong> 維持至少一個手臂的距離，不要強制肢體接觸。</li>
+                <li><strong>停止說教：</strong> 停止給予指令或說理，使用簡短中性的語句（如：「我會陪在這裡」）。</li>
+                <li><strong>立即通報：</strong> 若有自傷/他傷風險，立刻通報學務處（校安人員）及輔導室。</li>
+                <li><strong>法規提醒：</strong> 重大緊急校安事件須於2小時內通報教育部；法定事件24小時內通報。</li>
+            </ul>
+            <button id="close-sos">關閉快速應變模式</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <section id="about">
+            <h2>為什麼要學會降級 (De-escalation)？</h2>
+            <p>衝突通常不是突然發生的，而是有跡可循的壓力反應。辨識前兆並採取創傷知情 (Trauma-Informed) 的應對方式，能有效避免一般情緒事件演變成重大校安危機。</p>
+            <div class="disclaimer">
+                <strong>專業聲明：</strong> 本網站僅供教育訓練與研討使用，不取代醫療診斷、專業精神評估或校內正式危機通報程序。
+            </div>
+        </section>
+
+        <section id="traits">
+            <h2>高關懷學生常見特質與應對框架</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>自閉症 (ASD)</h3>
+                    <p><strong>常見特徵：</strong> 認知彈性較弱、感官易過載。<br>
+                    <strong>觸發因素：</strong> 突然改變規則、環境太吵。<br>
+                    <strong>策略：</strong> 給予預告、提供安靜空間、減少口語指令。</p>
+                </div>
+                <div class="card">
+                    <h3>過動症 (ADHD)</h3>
+                    <p><strong>常見特徵：</strong> 衝動控制力弱。<br>
+                    <strong>觸發因素：</strong> 冗長說教、多重連續指令。<br>
+                    <strong>策略：</strong> 單一步驟指令、提供有限的選擇。</p>
+                </div>
+                <div class="card">
+                    <h3>情緒行為障礙</h3>
+                    <p><strong>常見特徵：</strong> 容易將中性訊息解讀為敵意。<br>
+                    <strong>觸發因素：</strong> 公開指責、權力對抗。<br>
+                    <strong>策略：</strong> 運用反映式傾聽（「我知道你很生氣」），避免硬碰硬。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="signals">
+            <h2>危險徵兆分級與辨識表</h2>
+            <div class="traffic-light">
+                <div class="light green"><strong>🟢 抱怨/碎念 (低風險)</strong><br>維持正常互動，傾聽需求</div>
+                <div class="light yellow"><strong>🟡 明顯激動/走動 (中風險)</strong><br>注意警訊，降低刺激與要求</div>
+                <div class="light orange"><strong>🟠 威脅性言語 (中高風險)</strong><br>停止說理，準備啟動校內通報</div>
+                <div class="light red"><strong>🔴 破壞物品/自他傷威脅 (極高風險)</strong><br>優先疏散，立即啟動安全機制</div>
+            </div>
+        </section>
+
+        <section id="decision-tree">
+            <h2>我現在應該怎麼做？(互動式決策樹)</h2>
+            <div id="quiz-container" class="quiz-box">
+                <p id="question-text">學生現在是否出現威脅自身或他人的言語/行為，或開始破壞物品？</p>
+                <div class="btn-group">
+                    <button class="btn" onclick="nextStep(true)">是 (YES)</button>
+                    <button class="btn" onclick="nextStep(false)">否 (NO)</button>
+                </div>
+            </div>
+            <div id="result-container" class="result-box hidden">
+                <h3 id="result-title"></h3>
+                <p id="result-desc"></p>
+                <button class="btn" onclick="resetQuiz()">重新評估</button>
+            </div>
+        </section>
+
+        <section id="flow">
+            <h2>台灣校園與宜蘭縣專屬危機通報與協作流程</h2>
+            <p><strong>依據教育部法規及宜蘭縣學生輔導諮商中心規範：</strong></p>
+            <ul>
+                <li><strong>校內分工：</strong> 第一發現者安撫並隔離，學務處主導校安與現場控制，輔導室進行心理評估，健康中心負責醫療急救。</li>
+                <li><strong>通報時限：</strong> 重大緊急事件最遲2小時內通報；自傷/性平/兒少保等法定事件24小時內；一般事件72小時內。</li>
+                <li><strong>宜蘭在地資源：</strong> 若遇重大校園危機事件，可不受「校內輔導5次」限制，直接向<strong>宜蘭縣輔諮中心（設於宜蘭高中）</strong>申請「安心服務小組」入校進行專業減壓會談與心理支援。</li>
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
